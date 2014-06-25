@@ -1,71 +1,42 @@
-# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# THEMES (UNCOMMENT FOR ORIGINAL THEME)
-# ZSH_THEME="myCustom2"
-ZSH_THEME="myCustom3"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment following line if you want to  shown in the command execution time stamp
-# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
-# yyyy-mm-dd
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+ZSH_THEME="custom"
 plugins=(git zsh-syntax-highlighting)
-
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/x11/bin"
+# Aliases
+alias tnew="tmux new -s"
+alias tma="tmux attach -t"
+alias tswitch="tmux switch -t"
+alias tkill="tmux kill-session -t"
+alias tml="tmux ls"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias tmuxconfig="vim ~/.tmux.conf"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+alias sshdreamhost="ssh joesan16@joelsantiago.co"
+alias sshwhatbox="ssh rotorhead94@burger.whatbox.ca"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+alias getpath='echo -n $PWD|pbcopy|echo "current path copied to clipboard"'
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+alias showlibrary="chflags nohidden ~/Library/"
+alias showusers="sudo chflags nohidden /Users"
+alias swift="xcrun swift"
 
+# Paths
+LOCAL_BIN=/usr/local/bin
+USR_BIN=/usr/bin
+BIN=/bin
+USER_BIN=$HOME/bin
+HEROKU=/usr/local/heroku/bin
+USER_SBIN=/usr/sbin
+SBIN=/sbin
+X11=/opt/x11/bin
+
+export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$USER_SBIN:$SBIN:$X11
+
+# Initialize rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+COMPLETION_WAITING_DOTS="true"
+DISABLE_AUTO_TITLE="true"
