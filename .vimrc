@@ -19,45 +19,40 @@ set incsearch       " do incremental searching
 set ignorecase      " case insensitive searching
 
 " Files -------------------------------------
-filetype plugin indent on
 set hidden          " hides buffers instead of removing them
 set nobackup        " do not keep a backup file, use versions instead
 set autoread        " Set to auto read when a file is changed from the outside
 set autochdir       " automatically cd to file
 set noswapfile      " sets no swap file
 au InsertEnter * :checktime
-set wildignore=*.o,*.obj,*.bak,*.exe,*.m3u,*.avi,*.mp3,*.jpg,*.srt,*.sub,*.idx,*.nfo,*.mp4,*.sfv,*.mkv,*.rar,*.zip,*.smi,*.ssa,*.divx,*.style,*.nzb,*.chf,*.part,*.png,*.pdf,*.chm
 
-" Appearance ---------------------------------
-syntax on           " Syntax on
-set t_Co=256        " sets 256 colors in the terminal
-set cursorline      " Highlights the current line
-set number          " Sets the line number
-colorscheme solarized
+" Ignore specific filetypes ------------------
+set wildignore+=*.o,*.obj,*.bak,*.exe,*.m3u,*.avi
+set wildignore+=*.mp3,*.jpg,*.srt,*.sub,*.idx,*.nfo
+set wildignore+=*.mp4,*.sfv,*.mkv,*.rar,*.zip,*.smi
+set wildignore+=*.ssa,*.divx,*.style,*.nzb,*.chf
+set wildignore+=*.part,*.png,*.pdf,*.chm
 
 " Mouse --------------------------------------
-set mouse=a
+set mouse=a         " Enable mouse use
+set mousehide       " Hide the mouse when typing
 
-" Control Keys -------------------------------
-inoremap <C-BS> <C-W>
-nnoremap <C-BS> bdw         " ctrl-backspace deleted the previous word
-vnoremap <C-a> ggVG         " map ctrl+a to select all in visual mode
-nnoremap <C-a> ggVG         " map ctrl+a to select all in normal mode
-vnoremap <C-c> "+y          " map ctrl+c to copy in visual mode
-vnoremap <C-v> "+gP         " map ctrl+v to paste in visual mode
-inoremap <C-v> <C-O>"+gP    " map ctrl+v to paste in insert mode
-nnoremap <C-n> :bn<CR>      " Moves along buffers
 " Maps the control + movement keys to moving around window splits
 nnoremap <C-k> <C-W>k
 nnoremap <C-j> <C-W>j
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
-nnoremap <C-p> :A<CR>       " switch between header and source files
-nnoremap / /\v
-vnoremap / /\v
+
+" Remap Leader from \ to ,
+let mapleader=","
 
 " Vundle -------------------------------------
-set rtp+=~/.vim/bundle/Vundle.vim
+" Load vundle or clone from github repo if !exists
+let dir = expand("~/.vim/bundle/vundle")
+if !isdirectory(dir)
+    execute '!git clone https://github.com/gmarik/vundle.git '. dir
+endif
+let &rtp .= (empty(&rtp) ? '' : ',' ) . dir
 call vundle#begin()
 
 " Make Vundle manage itself
@@ -94,6 +89,13 @@ Plugin 'vim-scripts/L9'
 
 call vundle#end()
 filetype plugin indent on
+
+" Appearance ---------------------------------
+syntax enable       " Syntax on
+set t_Co=256        " sets 256 colors in the terminal
+set cursorline      " Highlights the current line
+set number          " Sets the line number
+colorscheme solarized
 
 " Airline ------------------------------------
 let g:airline_theme             = 'solarized'
