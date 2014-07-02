@@ -21,6 +21,8 @@ alias getpath='echo -n $PWD|pbcopy|echo "current path copied to clipboard"'
 
 alias showlibrary="chflags nohidden ~/Library/"
 alias showusers="sudo chflags nohidden /Users"
+
+# Alias to run the swift REPL
 alias swift="xcrun swift"
 
 # Paths
@@ -40,3 +42,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_AUTO_TITLE="true"
+
+# 'hub' alias to integrate it with git
+eval "$(hub alias -s)"

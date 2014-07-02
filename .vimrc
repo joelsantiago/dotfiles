@@ -33,7 +33,7 @@ syntax on           " Syntax on
 set t_Co=256        " sets 256 colors in the terminal
 set cursorline      " Highlights the current line
 set number          " Sets the line number
-colorscheme monokai
+colorscheme solarized
 
 " Mouse --------------------------------------
 set mouse=a
@@ -68,20 +68,22 @@ Plugin 'vim-scripts/L9'
 Plugin 'mattn/emmet-vim'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
-Plugin 'Keithbsmiley/swift.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Keithbsmiley/swift.vim'
+Plugin 'Keithbsmiley/tmux.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 " Airline ------------------------------------
-let g:airline_theme             = 'powerlineish'
+let g:airline_theme             = 'solarized'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
+"set encoding=utf-8
 set laststatus=2
 
 if !exists('g:airline_symbols')
