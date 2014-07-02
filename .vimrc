@@ -60,19 +60,37 @@ vnoremap / /\v
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Make Vundle manage itself
 Plugin 'gmarik/vundle'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/L9'
-Plugin 'mattn/emmet-vim'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
+
+" Vundle bundles
 Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'b4winckler/vim-objc'
+Plugin 'bling/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'elzr/vim-json'
+Plugin 'kien/ctrlp.vim'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'Keithbsmiley/tmux.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Raimondi/delimitMate'
+Plugin 'rizzatti/dash.vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-jdaddy'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/L9'
 
 call vundle#end()
 filetype plugin indent on
