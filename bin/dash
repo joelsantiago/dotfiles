@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Opens dash with either a blank window or searches docs for passed argument
+open "dash://$*"
