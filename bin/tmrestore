@@ -1,0 +1,25 @@
+#~/bin
+#~/scripts/tmrestore
+
+SESSIONNAME1="Experimental"
+SESSIONNAME2="Dreamhost"
+SESSIONNAME3="Work"
+tmux has-session -t $SESSIONNAME1 2>/dev/null
+tmux has-session -t $SESSIONNAME2 2>/dev/null
+tmux has-session -t $SESSIONNAME3 2>/dev/null
+
+if [ $? != 0 ]
+    then
+        # new session with name $SESSIONNAME1 and window 0 named "base"
+        tmux new-session -s $SESSIONNAME1 -n base -d
+        tmux new-session -s $SESSIONNAME2 -n base -d
+        tmux new-session -s $SESSIONNAME3 -n base -d
+
+        tmux send-keys -t $SESSIONNAME1 "~/Developer/" C-m
+        tmux send-keys -t $SESSIONNAME2 "~/Developer/Sites/" C-m
+        tmux send-keys -t $SESSIONNAME3 "~/Developer/" C-m
+fi
+
+tmux attach -t $SESSIONNAME1
+tmux attach -t $SESSIONNAME2
+tmux attach -t $SESSIONNAME3
