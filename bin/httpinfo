@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+# Fetches details for HTTP error codes
 curl http://httpcode.info/$1 | less
