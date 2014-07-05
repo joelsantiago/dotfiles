@@ -1,5 +1,4 @@
-#~/bin
-#~/scripts/tmrestore
+#!/usr/bin/bash
 
 SESSIONNAME1="Experimental"
 SESSIONNAME2="Dreamhost"
