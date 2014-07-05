@@ -95,6 +95,7 @@ syntax enable       " Syntax on
 set t_Co=256        " sets 256 colors in the terminal
 set cursorline      " Highlights the current line
 set number          " Sets the line number
+set background=dark
 colorscheme solarized
 
 " Airline ------------------------------------
@@ -103,7 +104,7 @@ let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
-"set encoding=utf-8
+set encoding=utf-8
 set laststatus=2
 
 if !exists('g:airline_symbols')
@@ -117,9 +118,6 @@ let g:tagbar_width=25
 let g:tagbar_compact=1
 let g:tagbar_singleclick=1
 let g:tagbar_sort=0
-
-" CtrlP settings --------------------------
-" let g:ctrlp_working_path_mode = 'c'
 
 " NERDtree settings --------------------------
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
