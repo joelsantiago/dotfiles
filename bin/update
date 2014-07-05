@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Check for software updates from Apple
+if which softwareupdate &> /dev/null; then
+    echo -e "Running Apple software update...\n"
+    sudo softwareupdate -ia
+fi
+
+# Update Homebrew, check for formulae upgrades and cleanup old versions
+if which brew &> /dev/null; then
+    echo -e "\nRunning homebrew updates...\n"
+    brew update
+    brew upgrade
+    brew cleanup
+fi
+
+# Check for software and packages updates for any Linux OS
+if which apt-get &> /dev/null; then
+    echo -e "\nRunning apt-get update...\n"
+    sudo apt-get update
+    sudo apt-get -y upgrade
+fi
+
+# Update npm and node packages
+if which npm &> /dev/null; then
+    echo -e "\nRunning npm updates...\n"
+    npm update npm -g
+    npm update -g
+fi
+
+# Update ruby gems
+if which gem &> /dev/null; then
+    echo -e "\nRunning gem updates...\n"
+    gem update --system
+    gem update
+fi
+
+# Update pip and python packages
+if which pip &> /dev/null; then
+    echo -e "\nRunning pip updates...\n"
+    pip-review --auto
+fi
