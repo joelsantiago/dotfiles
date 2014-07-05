@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 SESSIONNAME1="Experimental"
 SESSIONNAME2="Dreamhost"
