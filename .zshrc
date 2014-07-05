@@ -38,10 +38,14 @@ X11=/opt/x11/bin
 export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$USER_SBIN:$SBIN:$X11
 
 # Initialize rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null; then 
+    eval "$(rbenv init -)"; 
+fi
 
-COMPLETION_WAITING_DOTS="true"
-DISABLE_AUTO_TITLE="true"
+# Initialize pyenv
+if which pyenv > /dev/null; then 
+    eval "$(pyenv init -)"; 
+fi
 
 # 'hub' alias to integrate it with git
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
