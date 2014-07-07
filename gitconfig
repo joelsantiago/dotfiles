@@ -28,8 +28,6 @@
     a   = add --all
     b   = branch
     cb  = checkout -b
-    ca  = commit -am
+    ca  = commit -a
     cm  = commit -m
-    p   = pull origin master
-    pom = push origin master
     rc  = rm --cached
