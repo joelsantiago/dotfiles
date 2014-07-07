@@ -27,7 +27,10 @@
 [alias]
     a   = add --all
     b   = branch
+    c   = checkout
     cb  = checkout -b
-    ca  = commit -a
+    ca  = commit -am
     cm  = commit -m
+    p   = pull origin master
+    pom = push origin master
     rc  = rm --cached
