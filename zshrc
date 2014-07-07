@@ -7,6 +7,7 @@ source $ZSH/oh-my-zsh.sh
 alias tnew="tmux new -s"
 alias tma="tmux attach -t"
 alias tswitch="tmux switch -t"
+alias tnw="tmux new-window"
 alias tkill="tmux kill-session -t"
 alias tml="tmux ls"
 
@@ -18,12 +19,10 @@ alias sshdreamhost="ssh joesan16@joelsantiago.co"
 alias sshwhatbox="ssh rotorhead94@burger.whatbox.ca"
 
 alias getpath='echo -n $PWD|pbcopy|echo "current path copied to clipboard"'
-
 alias showlibrary="chflags nohidden ~/Library/"
-alias showusers="sudo chflags nohidden /Users"
+alias swift="xcrun swift"   # Alias to run the swift REPL
 
-# Alias to run the swift REPL
-alias swift="xcrun swift"
+hidden() { defaults write com.apple.finder AppleShowAllFiles $1; killall Finder }
 
 # Paths
 LOCAL_BIN=/usr/local/bin
@@ -33,9 +32,9 @@ USER_BIN=$HOME/bin
 HEROKU=/usr/local/heroku/bin
 USER_SBIN=/usr/sbin
 SBIN=/sbin
-X11=/opt/x11/bin
+TMUXIFIER=$HOME/.tmuxifier/bin
 
-export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$USER_SBIN:$SBIN:$X11
+export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$TMUXIFIER:$USER_SBIN:$SBIN
 
 # Initialize rbenv
 if which rbenv > /dev/null; then 
@@ -45,6 +44,11 @@ fi
 # Initialize pyenv
 if which pyenv > /dev/null; then 
     eval "$(pyenv init -)"; 
+fi
+
+# Initialize tmuxifier
+if which tmuxifier > /dev/null; then
+    eval "$(tmuxifier init -)";
 fi
 
 # 'hub' alias to integrate it with git

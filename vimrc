@@ -47,47 +47,10 @@ nnoremap <C-h> <C-W>h
 let mapleader=","
 
 " Vundle -------------------------------------
-" Load vundle or clone from github repo if !exists
-let dir = expand("~/.vim/bundle/vundle")
-if !isdirectory(dir)
-    execute '!git clone https://github.com/gmarik/vundle.git '. dir
+if filereadable(expand("~/.vimrc.bundles"))
+    source ~/.vimrc.bundles
 endif
-let &rtp .= (empty(&rtp) ? '' : ',' ) . dir
-call vundle#begin()
 
-" Make Vundle manage itself
-Plugin 'gmarik/vundle'
-
-" Vundle bundles
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'b4winckler/vim-objc'
-Plugin 'bling/vim-airline'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'elzr/vim-json'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Keithbsmiley/swift.vim'
-Plugin 'Keithbsmiley/tmux.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mattn/emmet-vim'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Raimondi/delimitMate'
-Plugin 'rizzatti/dash.vim'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-jdaddy'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/L9'
-
-call vundle#end()
 filetype plugin indent on
 
 " Appearance ---------------------------------
@@ -95,11 +58,20 @@ syntax enable       " Syntax on
 set t_Co=256        " sets 256 colors in the terminal
 set cursorline      " Highlights the current line
 set number          " Sets the line number
+colorscheme Tomorrow-Night-Eighties
 set background=dark
-colorscheme solarized
+
+" Line Number Resizing ----------------------
+" Always show line numbers, but only in current window
+:au WinEnter * :setlocal number
+:au WinLeave * :setlocal nonumber
+
+" Automatically resize vertical splits - Messes with NERDTree
+":au WinEnter * :set winfixheight
+":au WinEnter * :wincmd =
 
 " Airline ------------------------------------
-let g:airline_theme             = 'solarized'
+let g:airline_theme             = 'tomorrow'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline_powerline_fonts = 1
@@ -108,11 +80,12 @@ set encoding=utf-8
 set laststatus=2
 
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 
 " TagBar -------------------------------------
+map <C-t> :TagbarToggle<CR>
 let g:tagbar_left=0
 let g:tagbar_width=25
 let g:tagbar_compact=1
@@ -131,6 +104,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeCasadeOpenSingleChildDir=1
 let g:NERDTreeAutoDeleteBuffer=1
+set splitright
 
 " Emmet settings -----------------------------
 let g:user_emmet_install_global = 0
@@ -139,3 +113,6 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " Dash settings ------------------------------
 map <C-d> :Dash<CR>
+
+" Gundo settings -----------------------------
+map <C-g> :GundoToggle<CR>

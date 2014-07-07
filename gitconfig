@@ -20,3 +20,14 @@
     keepBackup = false
 [merge]
     tool = Kaleidoscope
+[color]
+    ui = auto
+[github]
+    user = joelsantiago
+[alias]
+    a   = add --all
+    b   = branch
+    cb  = checkout -b
+    ca  = commit -a
+    cm  = commit -m
+    rc  = rm --cached
