@@ -1,0 +1,32 @@
+tap homebrew/dupes
+tap homebrew/versions
+caskroom/cask
+update
+
+install bash
+install brew-cask
+install ctags
+install git
+install git-flow
+install grep
+install heroku-toolbelt
+install hub
+install macvim
+install mongodb
+install mysql
+install node
+install openssl
+install postgresql
+install pow
+install pyenv
+install rbenv
+install rbenv-gem-rehash
+install readline
+install reattach-to-user-namespace
+install ruby-build
+install sqlite
+install tmux
+install vim
+install wget
+
+link openssl --force
