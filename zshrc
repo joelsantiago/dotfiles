@@ -52,4 +52,4 @@ if which tmuxifier > /dev/null; then
 fi
 
 # 'hub' alias to integrate it with git
-#eval "$(hub alias -s)"
+eval "$(hub alias -s)"
