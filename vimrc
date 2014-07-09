@@ -32,6 +32,15 @@ set ruler
 " Line numbers are nice to have
 set number
 
+"Set textwidth to 80
+set textwidth=80
+
+" Set vertical line at 80 characters
+set colorcolumn=80
+
+" Set text wrap
+set wrap
+
 " Change the terminals title
 set title
 
