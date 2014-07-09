@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+######################################################################
+#
+# gi - A bash script that uses the gitignore.io api to quickly create
+#      gitignore files
+#
+######################################################################
+
+results=$(curl -s http://www.gitignore.io/api/$@)
+FILE=$PWD/.gitignore
+
+if [[ $# -eq 0 ]]; then
+    echo "$results"
+
+elif [ $1 == "list" ]; then
+    IFS=',' read -a array <<< "$results"
+
+    for element in "${array[@]}"
+    do
+        printf "%-8s\n" "${element}"
+    done | column
+
+else
+    if [ ! -f $FILE  ]; then
+        echo "$results" >> $FILE
+        echo ".gitignore was created at $PWD" 
+    else
+        echo ".gitignore already exists at $PWD, aborting..."
+    fi
+fi
