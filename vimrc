@@ -1,118 +1,235 @@
-" Editing -----------------------------------
-set nocompatible
-set ruler
-set backspace=indent,eol,start
-set showmatch
-filetype off
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .vimrc
+"
+"
+"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Tabs --------------------------------------
-set expandtab       " turns a tab into spaces
-set autoindent      " always set autoindenting on
-set shiftwidth=4    " spaces for auto-indents
-set tabstop=4       " number of spaces a tab counts for
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This must be first as it changes other options as a side effect
+set nocompatible
+
+" Sets how many lines of history VIM will remember
+set history=1000
+
+" Remap the leader from \ to ,
+let mapleader=","
+let g:mapleader=","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM User Interface
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show the current position
+set ruler
+
+" Line numbers are nice to have
+set number
+
+" Change the terminals title
+set title
+
+" Always show line numbers, but only in current window
+:au WinEnter * :setlocal number
+:au WinLeave * :setlocal nonumber
+
+" Set command bar height to double its size
+set cmdheight=2
+
+" Configure backspace so it acts as it should
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Don't redraw while executing macros
+set lazyredraw
+
+" Turn on for regular expressions
+set magic
+
+" Show matching brackets when cursor is selecting them
+set showmatch
+
+" Blink matching bracket for n tenths of a second
+set mat=2
+
+" Change split defaults to open in more comfortable locations
+set splitbelow
+set splitright
+
+" Scroll window when cursor is less than amount
+set scrolloff=5
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folds
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Don't fold by default
+set nofoldenable
+
+" Fold based on indent
+set foldmethod=indent
+
+" Set deepest fold level
+set foldnestmax=5
+
+" Toggle folds with the space bar
+nnoremap <Space> za
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ignore case when searching
+set ignorecase
+
+" Be smart when searching with cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, tab and indent related
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Make tabs smarter
 set smarttab
 
-" Searching ---------------------------------
-set hlsearch        " highlight searches
-set smartcase       " becomes case sensitive for uppercase
-set incsearch       " do incremental searching
-set ignorecase      " case insensitive searching
+" Always set auto-indenting on
+set autoindent
 
-" Files -------------------------------------
-set hidden          " hides buffers instead of removing them
-set nobackup        " do not keep a backup file, use versions instead
-set autoread        " Set to auto read when a file is changed from the outside
-set autochdir       " automatically cd to file
-set noswapfile      " sets no swap file
-au InsertEnter * :checktime
+"1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
 
-" Ignore specific filetypes ------------------
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+" Do not keep a backup file, use versions instead
+set nobackup
+
+" Set VIM to auto update when a file is changed from another editor
+set autoread
+
+" Automatically change directory to files current directory
+set autochdir
+
+" Set no swap files
+set noswapfile
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors and Themes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 256 colors in the terminal
+set t_Co=256
+
+" Set color scheme
+colorscheme Tomorrow-Night-Eighties
+
+set background=dark
+
+" Set options when running GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set guitablabel=%M\ %t
+    set guifont=Inconsolata\ for\ Powerline:h14
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fonts and File Types
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Moving around tabs, windows and buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Enable mouse use
+set mouse=a
+
+" Hide the mouse when typing
+set mousehide
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle Setup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Source the Vundle setup file
+if filereadable(expand("~/.vim/vundles.vim"))
+    source ~/.vim/vundles.vim
+endif
+
+" Source the Vundle bundle config file
+if filereadable(expand("~/.vim/vundles_config.vim"))
+    source ~/.vim/vundles_config.vim
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Status Line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Completion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Better completion in the CLI
+set wildmenu
+
+set wildmode=longest:full,full
+
+" Ignore these folders for completions
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.m3u,*.avi
 set wildignore+=*.mp3,*.jpg,*.srt,*.sub,*.idx,*.nfo
 set wildignore+=*.mp4,*.sfv,*.mkv,*.rar,*.zip,*.smi
 set wildignore+=*.ssa,*.divx,*.style,*.nzb,*.chf
 set wildignore+=*.part,*.png,*.pdf,*.chm
 
-" Mouse --------------------------------------
-set mouse=a         " Enable mouse use
-set mousehide       " Hide the mouse when typing
 
-" Maps the control + movement keys to moving around window splits
-nnoremap <C-k> <C-W>k
-nnoremap <C-j> <C-W>j
-nnoremap <C-l> <C-W>l
-nnoremap <C-h> <C-W>h
-
-" Remap Leader from \ to ,
-let mapleader=","
-
-" Vundle -------------------------------------
-if filereadable(expand("~/.vimrc.bundles"))
-    source ~/.vimrc.bundles
-endif
-
-filetype plugin indent on
-
-" Appearance ---------------------------------
-syntax enable       " Syntax on
-set t_Co=256        " sets 256 colors in the terminal
-set cursorline      " Highlights the current line
-set number          " Sets the line number
-colorscheme Tomorrow-Night-Eighties
-set background=dark
-
-" Line Number Resizing ----------------------
-" Always show line numbers, but only in current window
-:au WinEnter * :setlocal number
-:au WinLeave * :setlocal nonumber
-
-" Automatically resize vertical splits - Messes with NERDTree
-":au WinEnter * :set winfixheight
-":au WinEnter * :wincmd =
-
-" Airline ------------------------------------
-let g:airline_theme             = 'tomorrow'
-let g:airline_enable_branch     = 1
-let g:airline_enable_syntastic  = 1
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
-set laststatus=2
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-" TagBar -------------------------------------
-map <C-t> :TagbarToggle<CR>
-let g:tagbar_left=0
-let g:tagbar_width=25
-let g:tagbar_compact=1
-let g:tagbar_singleclick=1
-let g:tagbar_sort=0
-
-" NERDtree settings --------------------------
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"autocmd vimenter * NERDTree     "Start Nerdtree with vim
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDChristmasTree=1
-let g:NERDTreeHighlightCursorline=1
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeShowBookmarks=1
-let g:NERDTreeDirArrows=0
-let g:NERDTreeCasadeOpenSingleChildDir=1
-let g:NERDTreeAutoDeleteBuffer=1
-set splitright
-
-" Emmet settings -----------------------------
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_leader_key='<C-Z>'
-
-" Dash settings ------------------------------
-map <C-d> :Dash<CR>
-
-" Gundo settings -----------------------------
-map <C-g> :GundoToggle<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Misc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Load local vimrc settings
+if filereadable('.vimrc.local')
+  source .vimrc.local
+end
