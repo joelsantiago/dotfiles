@@ -7,11 +7,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme             = 'tomorrow'
+let g:airline_theme             = 'solarized'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#hunks#enabled=0
+let g:airline_left_sep          = ''
+let g:airline_right_sep         = ''
+
+"let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set laststatus=2
 
