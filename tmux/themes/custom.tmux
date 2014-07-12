@@ -1,4 +1,4 @@
-set -g status-fg colour231
+set -g status-fg colour232
 set -g status-fg colour231
 set -g status-bg colour234
 set -g status-left-length 60
