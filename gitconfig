@@ -27,7 +27,7 @@
 [alias]
     a   = add --all
     b   = branch
-    c   = checkout
+    co  = checkout
     cb  = checkout -b
     ca  = commit -am
     cm  = commit -m
