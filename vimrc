@@ -1,13 +1,26 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " .vimrc
 "
-"
+" Sections:
+"   -> General config
+"   -> VIM user interface
+"   -> Folds
+"   -> Searching
+"   -> Text, tabs and indents
+"   -> Files, backups and undo
+"   -> Colors and themes
+"   -> Fonts and filetypes
+"   -> Moving around tabs, windows and buffers
+"   -> Vundle setup
+"   -> Status line
+"   -> Completion
+"   -> Misc
 "
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General Config
+" General config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This must be first as it changes other options as a side effect
 set nocompatible
@@ -24,22 +37,17 @@ nmap <leader>w :w!<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM User Interface
+" VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the current position
 set ruler
 
-" Line numbers are nice to have
+" Set line number to relative and display current selected line number
 set number
-
-"Set textwidth to 80
-set textwidth=80
+set relativenumber
 
 " Set vertical line at 80 characters
 set colorcolumn=80
-
-" Set text wrap
-set wrap
 
 " Change the terminals title
 set title
@@ -108,7 +116,7 @@ set incsearch
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text, tab and indent related
+" Text, tabs and indents
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
@@ -118,6 +126,9 @@ set smarttab
 
 " Always set auto-indenting on
 set autoindent
+
+" Same goes for smart-indenting
+set smartindent
 
 "1 tab == 4 spaces
 set shiftwidth=4
@@ -146,18 +157,19 @@ set noswapfile
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colors and Themes
+" Colors and themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 256 colors in the terminal
 set t_Co=256
 
 " Set color scheme
-colorscheme Tomorrow-Night-Eighties
+colorscheme solarized
 
 set background=dark
 
 " Set options when running GUI mode
 if has("gui_running")
+    colorscheme fluffy
     set guioptions-=T
     set guioptions-=e
     set guitablabel=%M\ %t
@@ -166,14 +178,13 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fonts and File Types
+" Fonts and filetypes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,7 +210,7 @@ map <leader>ba :1,1000 bd!<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle Setup
+" Vundle setup
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source the Vundle setup file
 if filereadable(expand("~/.vim/vundles.vim"))
@@ -213,7 +224,7 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Status Line
+" Status line
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
@@ -238,6 +249,16 @@ set wildignore+=*.part,*.png,*.pdf,*.chm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Background toggle for solarized theme
+function! s:ToggleBackground()
+  if &background ==# "dark"
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
+silent! command ToggleBG call s:ToggleBackground()
+
 " Load local vimrc settings
 if filereadable('.vimrc.local')
   source .vimrc.local
