@@ -11,7 +11,7 @@ export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux/layouts/"
 alias tnew="tmux new -s"
 alias tma="tmux attach -t"
 alias tswitch="tmux switch -t"
-alias tnw="tmux new-window"
+alias tnw="tmux new-window -n"
 alias tkill="tmux kill-session -t"
 alias tml="tmux ls"
 
