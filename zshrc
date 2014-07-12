@@ -7,26 +7,10 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux/layouts/"
 
-# Aliases
-alias tnew="tmux new -s"
-alias tma="tmux attach -t"
-alias tswitch="tmux switch -t"
-alias tnw="tmux new-window -n"
-alias tkill="tmux kill-session -t"
-alias tml="tmux ls"
-
-alias reload=". ~/.zshrc"
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-alias tmuxconfig="vim ~/.tmux.conf"
-
-alias dreamhost="ssh joesan16@joelsantiago.co"
-alias whatbox="ssh rotorhead94@burger.whatbox.ca"
-
-alias lsh="ls -d .*"
-alias getpath='echo -n $PWD|pbcopy|echo "current path copied to clipboard"'
-alias showlibrary="chflags nohidden ~/Library/"
-alias swift="xcrun swift"   # Alias to run the swift REPL
+# Source aliasrc
+if [ -f ~/.aliasrc ]; then
+    source ~/.aliasrc
+fi
 
 hidden() { defaults write com.apple.finder AppleShowAllFiles $1; killall Finder }
 
