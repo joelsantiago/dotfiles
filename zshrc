@@ -1,39 +1,38 @@
+#========================================
+#   .zshrc
+#========================================
+
+# Source the common settings shared between zsh and bash
+if [[ ! -f ~/.shellrc ]]; then
+    echo "$HOME/.shellrc doesn't exist."
+else
+    source ~/.shellrc
+fi
+
+# Source oh-my-zsh directory and files
 ZSH=$HOME/.oh-my-zsh
+
+# Load zsh theme
 ZSH_THEME="custom"
+
+# Load zsh plugins
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Set VIM as the default editor
 export EDITOR=vim
+
+# Set tmuxifier layout paths for layout files
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux/layouts/"
 
-# Source aliasrc
-if [ -f ~/.aliasrc ]; then
-    source ~/.aliasrc
-fi
-
-hidden() { defaults write com.apple.finder AppleShowAllFiles $1; killall Finder }
-
-# Paths
-LOCAL_BIN=/usr/local/bin
-USR_BIN=/usr/bin
-BIN=/bin
-USER_BIN=$HOME/.bin
-HEROKU=/usr/local/heroku/bin
-USER_SBIN=/usr/sbin
-SBIN=/sbin
-TMUXFR=$HOME/.tmuxifier/bin
-
-export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$TMUXFR:$USER_SBIN:$SBIN:
-
 # Initialize rbenv
-if which rbenv > /dev/null; then 
-    eval "$(rbenv init -)"; 
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
 fi
 
 # Initialize pyenv
-if which pyenv > /dev/null; then 
-    eval "$(pyenv init -)"; 
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)";
 fi
 
 # Initialize tmuxifier
@@ -45,3 +44,9 @@ fi
 if which hub > /dev/null; then
     eval "$(hub alias -s)";
 fi
+
+# Source aliasrc
+[[ -f ~/.aliasrc ]] && source ~/.aliasrc
+
+# Source zshrc.local
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
