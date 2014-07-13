@@ -30,6 +30,7 @@ Plugin 'Keithbsmiley/swift.vim'
 Plugin 'Keithbsmiley/tmux.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
+Bundle "myusuf3/numbers.vim"
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'

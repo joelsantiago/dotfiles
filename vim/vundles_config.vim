@@ -70,3 +70,10 @@ map <C-d> :Dash<CR>
 " Gundo plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-g> :GundoToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Numbers plugin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Added for any future plugins that show numbers where they shouldn't be
+" Add plugins within brackets
+"let g:numbers_exclude = []
