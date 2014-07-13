@@ -34,3 +34,4 @@
     p   = pull origin master
     pom = push origin master
     rc  = rm --cached
+    s   = status -sb
