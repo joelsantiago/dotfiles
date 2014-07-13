@@ -1,0 +1,37 @@
+#========================================
+#   .zshrc                              
+#========================================
+
+# Set path to DOTFILES repo
+# export DOTFILES="$(dirname $(readlink $HOME/.shellrc))"
+
+# Source custom local settings file
+[[ -e ~/.localrc ]] && source ~/.localrc
+
+# Verify if user is on OSX
+if [[ $OSTYPE == darwin* ]]; then
+    export OSX=true
+fi
+
+# Set the path to include the following:
+#========================================
+# For Homebrew
+LOCAL_BIN=/usr/local/bin
+
+# For system executables
+USR_BIN=/usr/bin
+
+BIN=/bin
+
+# For user executables
+USER_BIN=$HOME/.bin
+
+# For Heroku
+HEROKU=/usr/local/heroku/bin
+USER_SBIN=/usr/sbin
+SBIN=/sbin
+
+# For Tmuxifier
+TMUXFR=$HOME/.tmuxifier/bin
+
+export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$TMUXFR:$USER_SBIN:$SBIN:
