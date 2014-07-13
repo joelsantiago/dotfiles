@@ -25,6 +25,10 @@
 " This must be first as it changes other options as a side effect
 set nocompatible
 
+" I - Disable the startup message
+" a - Avoid pressing enter after saves
+set shortmess=Ia
+
 " Sets how many lines of history VIM will remember
 set history=1000
 
@@ -33,7 +37,19 @@ let mapleader=","
 let g:mapleader=","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>
+
+" Fast quiting
+nmap <leader>q :q!<CR>
+
+" Remap esc to ctrl-C
+noremap <C-c> <Esc>
+
+" Don't make error noises
+set noerrorbells
+
+" Don't show error bells
+set visualbell
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,7 +60,7 @@ set ruler
 
 " Set line number to relative and display current selected line number
 set number
-set relativenumber
+"set relativenumber
 
 " Set vertical line at 80 characters
 set colorcolumn=80
@@ -258,6 +274,16 @@ function! s:ToggleBackground()
   endif
 endfunction
 silent! command ToggleBG call s:ToggleBackground()
+
+" Clean trailing whitespace
+nnoremap <silent> <leader>t :call ClearWhitespace()<CR>
+function! ClearWhitespace()
+    normal mi
+    silent! %s/\s\+$//
+    let @/=""
+    update
+    normal `i
+endfunction
 
 " Load local vimrc settings
 if filereadable('.vimrc.local')
