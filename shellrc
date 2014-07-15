@@ -28,10 +28,12 @@ USER_BIN=$HOME/.bin
 
 # For Heroku
 HEROKU=/usr/local/heroku/bin
+
+LOCAL_SBIN=/usr/local/sbin
 USER_SBIN=/usr/sbin
 SBIN=/sbin
 
 # For Tmuxifier
 TMUXFR=$HOME/.tmuxifier/bin
 
-export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$TMUXFR:$USER_SBIN:$SBIN:
+export PATH=$LOCAL_BIN:$USR_BIN:$BIN:$USER_BIN:$HEROKU:$TMUXFR:$LOCAL_SBIN:$USER_SBIN:$SBIN:
