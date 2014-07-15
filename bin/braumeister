@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Searches Braumeister.org for possible Homebrew packages
+open -a safari http://braumeister.org/search/$1
