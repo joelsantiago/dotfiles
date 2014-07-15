@@ -24,7 +24,7 @@ elif [ $1 == "list" ]; then
 else
     if [ ! -f $FILE  ]; then
         echo "$results" >> $FILE
-        echo ".gitignore was created at $PWD" 
+        echo ".gitignore was created at $PWD"
     else
         echo ".gitignore already exists at $PWD, aborting..."
     fi
