@@ -1,8 +1,9 @@
 [user]
 	name = Joel Santiago
-	email = joel.santiago1@gmail.com
+	email = mail@joelsantiago.co
 [core]
 	editor = subl -n -w
+	excludesfile = /Users/joelsantiago/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -35,3 +36,8 @@
     pom = push origin master
     rc  = rm --cached
     s   = status -sb
+[credential]
+	helper = osxkeychain
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
