@@ -9,6 +9,7 @@ alias dl="cd ~/Downloads"
 alias db="cd ~/Dropbox"
 alias dv="cd ~/Developer"
 alias df="cd ~/Developer/Dotfiles"
+alias path="echo $PATH | tr ':' '\n'"
 
 # OSX Specific
 #========================================
@@ -38,6 +39,7 @@ alias localip="ipconfig getifaddr en1"
 
 # Config files
 #========================================
+alias shellconfig="vim ~/.shellrc"
 alias zshconfig="vim ~/.zshrc"
 alias tmuxconfig="vim ~/.tmux.conf"
 alias vimconfig="vim ~/.vimrc"
