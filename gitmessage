@@ -1,0 +1,15 @@
+# Please enter the commit message for your changes. Lines starting
+# with ‘#’ will be ignored, and an empty message aborts the commit.
+#
+# 50-character subject line
+#
+# Change-log Format: [Abc]: Message.
+#
+# Parameters and Examples
+# -------------------------
+# * Add:                New function to rule the world.
+# * Mod(ify):           Add women factor in Domination.ruleTheWorld().
+# * Ref(factoring):     Extract empathy stuff to an abstract class.
+# * Fix:                RUL-42 or #42 Starvation need to be initialised before Energy to avoid the nullpointer in People.
+# * Rem(ove):           freeSpeech is not used anymore.
+# * Rea(dability):      Removed old TODO and extra space in header.
