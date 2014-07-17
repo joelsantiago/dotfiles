@@ -1,9 +1,9 @@
 #========================================
-#   .zshrc                              
+#   .zshrc
 #========================================
 
 # Set path to DOTFILES repo
-# export DOTFILES="$(dirname $(readlink $HOME/.shellrc))"
+export DOTFILES="$(dirname $(readlink $HOME/.shellrc))"
 
 # Source custom local settings file
 [[ -e ~/.localrc ]] && source ~/.localrc
