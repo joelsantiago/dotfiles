@@ -35,9 +35,9 @@ if which pyenv > /dev/null; then
     eval "$(pyenv init -)";
 fi
 
-# Initialize tmuxifier
-if which tmuxifier > /dev/null; then
-    eval "$(tmuxifier init -)";
+# Initialize tmuxinator
+if which tmuxinator > /dev/null; then
+    source ~/.tmux/tmuxinator.zsh
 fi
 
 # 'hub' alias to integrate it with git
