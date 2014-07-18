@@ -171,6 +171,8 @@ set autochdir
 " Set no swap files
 set noswapfile
 
+" Set auto-wrapping for git commit messages at 72 chars
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and themes
