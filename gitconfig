@@ -2,7 +2,7 @@
 	name = Joel Santiago
 	email = mail@joelsantiago.co
 [core]
-	editor = subl -n -w
+	editor = vim
 	excludesfile = /Users/joelsantiago/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
