@@ -183,7 +183,15 @@ set t_Co=256
 " Set color scheme
 colorscheme solarized
 
-set background=dark
+" Change color scheme from solarized light and dark based on time of day
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
+    set background=light
+else
+    set background=dark
+endif
+
+autocmd BufWritePost * source ~/.vimrc
 
 " Set options when running GUI mode
 if has("gui_running")
@@ -286,6 +294,9 @@ function! ClearWhitespace()
     update
     normal `i
 endfunction
+
+" Run clearwhitespace() on file save
+autocmd BufWritePre * :call ClearWhitespace()
 
 " Load local vimrc settings
 if filereadable('.vimrc.local')
