@@ -34,7 +34,8 @@
     tool = Kaleidoscope
 [alias]
     # add
-    a = add --all
+    a = add
+    al = add --all
 
     # branch
     b = branch -v
