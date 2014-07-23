@@ -27,6 +27,24 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Empty Trashes on all mounted volumes && clear system logs
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
+# Start backup and display Time Machine progress, making sure it's working right
+alias backup="tmutil startbackup && sudo opensnoop -n backupd | grep -v 'Time Machine Backups'"
+
+# List only dotfiles
+alias lsh="ls -d .*"
+
+# Get path of current directory and paste it to clipboard
+alias getpath="echo -n $PWD|pbcopy|echo \"current path copied to clipboard\""
+
+# Show the library folder when system updates hide it
+alias showlibrary="chflags nohidden ~/Library/"
+
+# Run the swift REPL, with Xcode 6 in beta, this is currently non-functional
+alias swift="xcrun swift"
+
+# Function to change the color of iTerm based on time of day
+alias colorize="osascript ~/Developer/Dotfiles/scripts/itermcolors.applescript"
+
 # Text Editors
 #========================================
 alias v="vim"
@@ -84,13 +102,6 @@ alias tka="Tmux kill-server"
 #========================================
 alias dreamhost="ssh joesan16@joelsantiago.co"
 alias whatbox="ssh rotorhead94@burger.whatbox.ca"
-
-# OSX
-#========================================
-alias lsh="ls -d .*"
-alias getpath="echo -n $PWD|pbcopy|echo \"current path copied to clipboard\""
-alias showlibrary="chflags nohidden ~/Library/"
-alias swift="xcrun swift" # Alias to run the Swift REPL, currently non functional
 
 # Source local alias file
 #========================================
