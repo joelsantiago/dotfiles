@@ -40,13 +40,11 @@ if which tmuxinator > /dev/null; then
     source ~/.tmux/tmuxinator.zsh
 fi
 
-# 'hub' alias to integrate it with git
-if which hub > /dev/null; then
-    eval "$(hub alias -s)";
-fi
-
 # Source aliasrc
 [[ -f ~/.aliasrc ]] && source ~/.aliasrc
 
 # Source zshrc.local
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Run colorize and set color of iTerm based on time of day
+colorize
