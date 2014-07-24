@@ -130,6 +130,9 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
+" Redraw the screen and remove any search highlighting
+nnoremap <silent> <leader>c :nohl<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tabs and indents
@@ -195,7 +198,6 @@ autocmd BufWritePost * source ~/.vimrc
 
 " Set options when running GUI mode
 if has("gui_running")
-    colorscheme fluffy
     set guioptions-=T
     set guioptions-=e
     set guitablabel=%M\ %t
